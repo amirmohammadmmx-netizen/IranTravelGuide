@@ -31,6 +31,7 @@ const city = {
         center: [51.389, 35.6892],
         places: [
             { name: "Golestan Palace", category: "Historic", description: "A royal complex with Persian garden elegance and intricate tilework.", image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Golestan_Palace%2C_Tehran%2C_Iran_%2853760330898%29.jpg/960px-Golestan_Palace%2C_Tehran%2C_Iran_%2853760330898%29.jpg?utm_source=fa.wikipedia.org&utm_campaign=index&utm_content=thumbnail" },
+            { name: "Golestan Palace", category: "Historic", description: "A royal complex with Persian garden elegance and intricate tilework.", image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80" },
             { name: "Azadi Tower", category: "Culture", description: "A modern symbol of Tehran and one of the city’s most iconic landmarks.", image: "https://images.unsplash.com/photo-1519058492434-946de8a5c0c4?auto=format&fit=crop&w=800&q=80" },
             { name: "Milad Tower", category: "Scenic", description: "An iconic skyline landmark offering panoramic views over Tehran.", image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
             { name: "Tehran Grand Bazaar", category: "Market", description: "A maze of traditional shops, spices, carpets, and Persian charm.", image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=800&q=80" },
@@ -206,7 +207,10 @@ const city = {
             {name:"Morvarid Palace", category:"Historical", description:"A unique palace in Mehrshahr known for its distinctive architecture.", image:"https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Pearl_Palace_-Kakh_e_Morvarid-_Karaj_Iran.jpg/330px-Pearl_Palace_-Kakh_e_Morvarid-_Karaj_Iran.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"},
             {name:"Bam-e Karaj", category:"Nature", description:"A scenic viewpoint offering panoramic views of Karaj and the surrounding mountains.", image:"https://d3fphkxyf5o5bm.cloudfront.net/image-resize/format=webp,w=720/QwRY54Li1HMwD7oNfofxOHiJ2KKUgWiNqbSYVegww4"},
             {name:"Fateh Garden", category:"Park", description:"A peaceful green space in Karaj, perfect for walking and relaxing.", image:"https://seeiran.ir/en/wp-content/uploads/2026/09/%D8%A8%D8%A7%D8%BA-%D9%81%D8%A7%D8%AA%D8%AD-%DA%A9%D8%B1%D8%AC3-768x439.webp"},
-            {name:"Chamran Park", category:"Park", description:"A popular urban park with green spaces and recreational areas.", image:"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Chamran_park_2020-04-06_09.jpg/960px-Chamran_park_2020-04-06_09.jpg?utm_source=fa.wikipedia.org&utm_campaign=index&utm_content=thumbnail"}
+            {name:"Chamran Park", category:"Park", description:"A popular urban park with green spaces and recreational areas.", image:"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Chamran_park_2020-04-06_09.jpg/960px-Chamran_park_2020-04-06_09.jpg?utm_source=fa.wikipedia.org&utm_campaign=index&utm_content=thumbnail"},
+            { name: "Gorgan Bay", category: "Nature", description: "A scenic area known for coastal and natural beauty.", image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" },
+            { name: "Sari Bazaar", category: "Market", description: "An authentic city market with local flavors and crafts.", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80" },
+            { name: "Mazandaran Nature", category: "Nature", description: "A refreshing northern landscape with green hills and forests.", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" }
         ]
     }
 };
