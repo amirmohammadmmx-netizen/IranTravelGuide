@@ -3,17 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trip</title>
+    <meta name="theme-color" content="#0f172a">
+    <title>Iran Nomad | Discover Iran</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.3/index.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <button>Dark mode</button>
-    <div id="city">
-        <h2 id="title">Choose a location on the map</h2>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="brand-wrap">
+                <div class="brand-mark">I</div>
+                <div>
+                    <span class="brand-name">Iran Nomad</span>
+                    <small>travel guide</small>
+                </div>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#discover">Discover</a>
+                <a href="#map-panel">Map</a>
+                <a href="#planner">Planner</a>
+                <a href="#insights">Insights</a>
+            </nav>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle" type="button">
+                    <span>Dark mode</span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="discover">
+                <div class="hero-copy">
+                    <p class="eyebrow">Explore the soul of Iran</p>
+                    <h1>Journey through culture, desert, mountains and hospitality.</h1>
+                    <p class="hero-text">
+                        Discover unforgettable places, plan your route, and build a personal travel experience across Iran’s most beautiful cities.
+                    </p>
+
+                    <div class="search-box">
+                        <input id="city-search" type="text" placeholder="Search destination, landmark, or vibe..." aria-label="Search destinations">
+                        <button type="button" class="search-btn">Search</button>
+                    </div>
+
+                    <div class="hero-actions">
+                        <button class="primary-btn" type="button">Start exploring</button>
+                        <button class="secondary-btn" type="button">View itineraries</button>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <strong id="city-total">12</strong>
+                            <span>Cities</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong id="place-total">0</strong>
+                            <span>Landmarks</span>
+                        </div>
+                        <div class="stat-card">
+                            <strong id="category-total">0</strong>
+                            <span>Travel styles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="floating-badge badge-top">Best time: Spring</div>
+                    <div class="floating-badge badge-bottom">Top pick</div>
+                    <div class="hero-image-card">
+                        <div class="hero-art" aria-label="Iran landscape artwork"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="city-picker-wrap">
+                <div class="section-heading">
+                    <p class="eyebrow">Popular cities</p>
+                    <h2>Choose your destination</h2>
+                </div>
+                <div id="city-selector" class="city-selector" aria-label="City selector"></div>
+            </section>
+
+            <section class="map-panel" id="map-panel">
+                <div class="map-info">
+                    <p class="eyebrow">Selected city</p>
+                    <h2 id="selected-city">Tehran</h2>
+                    <p id="city-subtitle">Capital culture and mountain views</p>
+                    <div class="city-meta">
+                        <span id="city-region">Capital region</span>
+                        <span id="city-season">Best season: Spring</span>
+                        <span id="city-budget">Budget: $$$</span>
+                    </div>
+                </div>
+
+                <div id="map" aria-label="Map of Iran"></div>
+            </section>
+
+            <section id="planner" class="planner-section">
+                <div class="section-heading">
+                    <p class="eyebrow">Trip builder</p>
+                    <h2>Plan your route</h2>
+                </div>
+
+                <div class="planner-grid">
+                    <div class="planner-panel">
+                        <h3>Your saved places</h3>
+                        <ul id="planner-list" class="planner-list"></ul>
+                    </div>
+                    <div class="planner-panel accent-panel">
+                        <h3>Travel summary</h3>
+                        <div class="summary-item">
+                            <span>Destination</span>
+                            <strong id="summary-city">Tehran</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Saved spots</span>
+                            <strong id="summary-count">0</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Estimated trip</span>
+                            <strong id="summary-trip">2-3 days</strong>
+                        </div>
+                        <button class="primary-btn full-width" type="button">Export itinerary</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="discover-grid" id="insights">
+                <div class="discover-header">
+                    <p class="eyebrow">Local favorites</p>
+                    <h2 id="title">Explore the highlights</h2>
+                </div>
+                <div class="filter-bar" id="filter-bar" aria-label="Attraction filters"></div>
+                <div id="suggestions" class="suggestions-grid"></div>
+            </section>
+        </main>
     </div>
-    <div id="map"></div>
-    <div id="suggestions"></div>
+
     <script src="https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.3/index.js"></script>
     <script src="JavaScript/script.js"></script>
 </body>
