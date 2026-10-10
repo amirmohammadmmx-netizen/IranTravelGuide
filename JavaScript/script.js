@@ -280,7 +280,16 @@ const translation={
         c:"Popular cities",
         destination:"Choose your destination",
         selected:"Selected city",
-        Local:"Local favorites"
+        Local:"Local favorites",
+        Capital:"Capital region",
+        trip:"Trip builder",
+        des:"Destination",
+        saved:"Saved spots",
+        Estimated:"Estimated trip",
+        Export:"Export itinerary",
+        summary:"Travel summary",
+        save:"Your saved places",
+        route:"Plan your route"
     },
     fa:{
         name:"ایران نُومَد",
@@ -332,7 +341,16 @@ const translation={
         c:"شهرهای محبوب",
         destination:"مقصد مورد نظر انتخاب کنید",
         selected:"شهر انتخاب شده",
-        Local:"مکان های مورد علاقه"
+        Local:"مکان های مورد علاقه",
+        Capital:"پایتخت محدوده",
+        trip:"برنامه ریز سفر",
+        des:"مقصد",
+        saved:"جاهای ذخیره شده",
+        Estimated:"سفر براورده شده",
+        Export:"خروجی برنامه سفر",
+        summary:"خلاصه سفر",
+        save:"مکان های ذخیره شده شما",
+        route:"برنامه ریزی مسیر شما"
     }
 }
 
