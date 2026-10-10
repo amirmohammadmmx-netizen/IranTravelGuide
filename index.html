@@ -17,21 +17,24 @@
             <div class="brand-wrap">
                 <div class="brand-mark">I</div>
                 <div>
-                    <span class="brand-name">Iran Nomad</span>
-                    <small>travel guide</small>
+                    <span class="brand-name" data-i18n="name">Iran Nomad</span>
+                    <small data-i18n="n">travel guide</small>
                 </div>
             </div>
 
             <nav class="main-nav">
-                <a href="#discover">Discover</a>
-                <a href="#map-panel">Map</a>
-                <a href="#planner">Planner</a>
-                <a href="#insights">Insights</a>
+                <a href="#discover" data-i18n="discover">Discover</a>
+                <a href="#map-panel" data-i18n="map">Map</a>
+                <a href="#planner" data-i18n="planner">Planner</a>
+                <a href="#insights" data-i18n="insights">Insights</a>
             </nav>
 
             <div class="header-actions">
                 <button id="theme-toggle" class="theme-toggle" type="button">
                     <span>Dark mode</span>
+                </button>
+                <button id="change-Language" class="change-Language" type="button">
+                    <span data-i18n="languageButton">Change Language to Persian</span>
                 </button>
             </div>
         </header>
@@ -39,34 +42,34 @@
         <main>
             <section class="hero" id="discover">
                 <div class="hero-copy">
-                    <p class="eyebrow">Explore the soul of Iran</p>
-                    <h1>Journey through culture, desert, mountains and hospitality.</h1>
-                    <p class="hero-text">
+                    <p class="eyebrow" data-i18n="text">Explore the soul of Iran</p>
+                    <h1 data-i18n="p">Journey through culture, desert, mountains and hospitality.</h1>
+                    <p class="hero-text" data-i18n="t">
                         Discover unforgettable places, plan your route, and build a personal travel experience across Iran’s most beautiful cities.
                     </p>
 
                     <div class="search-box">
-                        <input id="city-search" type="text" placeholder="Search destination, landmark, or vibe..." aria-label="Search destinations">
-                        <button type="button" class="search-btn">Search</button>
+                        <input id="city-search" type="text" placeholder="Search destination, landmark, or vibe..." aria-label="Search destinations" data-i18n-placeholder="searchbox">
+                        <button type="button" class="search-btn" data-i18n="searchbtn">Search</button>
                     </div>
 
                     <div class="hero-actions">
-                        <button class="primary-btn" type="button">Start exploring</button>
-                        <button class="secondary-btn" type="button">View itineraries</button>
+                        <button class="primary-btn" type="button" data-i18n="Start">Start exploring</button>
+                        <button class="secondary-btn" type="button" data-i18n="View">View itineraries</button>
                     </div>
 
                     <div class="stats-row">
                         <div class="stat-card">
                             <strong id="city-total">12</strong>
-                            <span>Cities</span>
+                            <span data-i18n="citi">Cities</span>
                         </div>
                         <div class="stat-card">
                             <strong id="place-total">0</strong>
-                            <span>Landmarks</span>
+                            <span data-i18n="land">Landmarks</span>
                         </div>
                         <div class="stat-card">
                             <strong id="category-total">0</strong>
-                            <span>Travel styles</span>
+                            <span data-i18n="Travel">Travel styles</span>
                         </div>
                     </div>
                 </div>
@@ -82,15 +85,15 @@
 
             <section class="city-picker-wrap">
                 <div class="section-heading">
-                    <p class="eyebrow">Popular cities</p>
-                    <h2>Choose your destination</h2>
+                    <p class="eyebrow" data-i18n="c">Popular cities</p>
+                    <h2 data-i18n="destination">Choose your destination</h2>
                 </div>
                 <div id="city-selector" class="city-selector" aria-label="City selector"></div>
             </section>
 
             <section class="map-panel" id="map-panel">
                 <div class="map-info">
-                    <p class="eyebrow">Selected city</p>
+                    <p class="eyebrow" data-i18n="selected">Selected city</p>
                     <h2 id="selected-city">Tehran</h2>
                     <p id="city-subtitle">Capital culture and mountain views</p>
                     <div class="city-meta">
@@ -135,7 +138,7 @@
 
             <section class="discover-grid" id="insights">
                 <div class="discover-header">
-                    <p class="eyebrow">Local favorites</p>
+                    <p class="eyebrow" data-i18n="Local">Local favorites</p>
                     <h2 id="title">Explore the highlights</h2>
                 </div>
                 <div class="filter-bar" id="filter-bar" aria-label="Attraction filters"></div>
