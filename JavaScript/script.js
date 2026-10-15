@@ -22,6 +22,11 @@ const itineraryButton = document.querySelector(".hero-actions .secondary-btn");
 const exportRouteButton = document.querySelector(".accent-panel .primary-btn");
 const chLanguage = document.getElementById("change-Language");
 const languageText = chLanguage.querySelector("span");
+const startcity=document.getElementById("start-city");
+const destination=document.getElementById("destination-city");
+const routeresult=document.getElementById("route-result")
+const transport=document.getElementById("transport-mode")
+const calculatebtn=document.getElementById("calculate-route")
 let currentlanguage = "en";
 const city = {
   Tehran: {
@@ -1059,6 +1064,149 @@ const city = {
       },
     ],
   },
+  Qeshm:{
+    subtitle:"Discover the Natural Wonders of Qeshm",
+    subtitleFa:"شگفتی‌های طبیعی قشم را کشف کن",
+    accent:"#0D9488",
+    center:[55.9355, 26.8264],
+    places:[
+        {
+            name:"Center of Qeshm",
+            nameFa:"مرکز قشم",
+            category:"city",
+            image:"blob:https://chatgpt.com/5a25d195-9aa4-4e96-b17d-eef10d612aad",
+            coordinates:[26.9581,55.8917]
+        },
+        {
+            name:"Stars Valley",
+            nameFa:"دره ستارگان",
+            category:"nature",
+            image:"https://images.openai.com/static-rsc-4/wp-0MEqgoVe1Bup_rnmJtMlK_hqDa6vZ-GKKZe8TQzNNB4uvNOANC4pcbwkyt6KOLIzYx3F-NJG7ZiyefKXrdQHwNSDEP1BbH4xm3SVl9GgCukDRxLut_MGyptovqDIr_Ll7kqXH78YdrI-ewi_SisySTA--OdSXhwZYD-GkYNQCCd3sQ8CMSswrQGot8iMs?purpose=fullsize",
+            coordinates:[26.8830,55.9500]
+        },
+        {
+            name:"Chahkooh Canyon",
+            nameFa:"تنگه چاهکوه",
+            category:"nature",
+            image:"https://images.openai.com/static-rsc-4/f6xEeqz-pYKklMi1bbP6iAK4T5lWNlHi5RUaNaZFsDoECB3zy3htGSimO7KU6c3dGcfdNkUrfdcteHSTKdot7xeTz5UTTiPT5VWWav1nAhORq0toNt-YTYnZI3zIvjE-3gEDFJYm4di6rGrXjLadHDWxOwmx-LDmnCDJno10Q1MGRIc-UfXLWoSe2buBWLO_?purpose=fullsize",
+            coordinates:[26.7010,55.8840]
+        },
+        {
+            name:"Hara Mangrove Forest",
+            nameFa:"جنگل‌های حرا",
+            category:"nature",
+            image:"https://images.openai.com/static-rsc-4/IMWqkJLvnnKYS_SQDEkRM_tLMuTtyAPPx92PGH1h9i4XXTwaxdHl8MxTKp9j3sIAsChZoy_iLH3EI6b3FOjcy1bCv6ibw7_EdDg4FXU_w-HvBsv7fLDNi2bRq-uCYO5knViLjNgEcZUs4Y22KfslLgk7634e9I-KErIeJh1zTGpGMyySN9j9K_HUy8vOWw8O?purpose=fullsize",
+            coordinates:[26.8000,55.7000]
+        },
+        {
+            name:"Naz Islands",
+            nameFa:"جزایر ناز",
+            category:"nature",
+            image:"https://images.openai.com/static-rsc-4/GgKsXp7PJui83qWsVrX7xF_LMe2cxPIQejRDufmPdPtJyHmGjWUQMJ-hZJ3uPzLrfhUOoda6XV2NytKkI-JN2k933QrvxGAzexg_uB5-H6yNgnrlC2apaYe467Wh7YFHvorO5KnwMOI8LxCN2sdJWDlov3h0aKNmXRO2dllHatblnFk28dT3sLiOMXd5BXDM?purpose=fullsize",
+            coordinates:[26.8000,56.0700]
+        },
+        {
+            name:"Laft Village",
+            nameFa:"روستای لافت",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/9m-HPZdWGW1U_prXtRbD1slgA1K1Yg-4tj0c4EPajoiZteybSYB-h4Pn236LD8zXaRYP2WIu38qylO8ju5zBrjkg3pliKGy6VRNAeemkUnkE3w3_IiI2kov1SzVlJcb3aYIU0M8sj23x0FZkvfYPNcqTDapzTImRvyy-De78ACdU4M1wLm69SZFsbjimamFN?purpose=fullsize",
+            coordinates:[26.9500,55.7500]
+        },
+        {
+            name:"Namakdan Salt Cave",
+            nameFa:"غار نمکدان",
+            category:"nature",
+            image:"https://images.openai.com/static-rsc-4/16-CYjmglMg_Lgj8aBVdQTYSbzfQnsQZOf_g2q-ewvai7IbiVpVyEwtZP_ItUBKuO-KvvA_TLrRtvksShwy2XOUejdutV_5vYszCtSmyRo0lx0uDmbSKU9bHmrBwAakU1ia25xlV4DnSTTisZA2Y0WvLYeCofCqZ8PgfocvJPy62QwdHGj2RjmjzHP-tYj8f?purpose=fullsize",
+            coordinates:[26.6500,55.5500]
+        },
+    ],
+  },
+  Kashan:{
+    subtitle:"Explore the Historic Charm of Kashan",
+    subtitleFa:"جاذبه‌های تاریخی و معماری کاشان را کشف کن",
+    accent:"#B45309",
+    center:[51.428,33.982],
+    places:[
+        {
+            name:"Fin Garden",
+            nameFa:"باغ فین",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/gdC6aH93Fg42dTdpFHnETN8ElNdaVXXU_cKRqvEXLgC_cYqrQ1O5gkWRuJ1gGearLw8WnehXG53Xxz2e8GPCCluB4opYjaxDJ3oHwC7ZowKnU2YYVLrRgC_KLTo85XIFHkC1gMyJj1wQuV8YMIibok8q1--MVj4Xiyny-w6SZ0NC7a6wPnNpOWDyMP7_HJCf?purpose=fullsize",
+            coordinates:[33.9470,51.4430]
+        },
+        {
+            name:"Tabatabaei House",
+            nameFa:"خانه طباطبایی‌ها",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/l6DBSKkrce5iSrn2ULHicgMGW63VR55u896-VCf5Pm8NL7q1rs89HfgUecuYIhcsv28Nz9PtMlhQlLl-gW0wnA1LyhKR2MtIdX7_w4BveBfFw-9WjHurYLhOJsoCqaAZy2lM8nlGwJVstmKab4ykEe7jTzgu6kBRNf56W62BqTg6lJaQxE0VIUJdjN2K1RPL?purpose=fullsize",
+            coordinates:[33.9790,51.4370]
+        },
+        {
+            name:"Agha Bozorg Mosque",
+            nameFa:"مسجد آقابزرگ",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/yB557wyEUNu5vE3KSfN94iHDJgZGwr3041g9j9cM6Zw8fDfY-uq3DjdVGZrFS4ok_OgvtP_u-IB5hbzfjkH8SiAsu44PUS0u-CfSnIG14JYbd_tdt_8imir5KHDc-hrzrV8bwNkoGLiccSk1ZSV_4Bz8mbfG5FBjy4g1_Gh7WGas4oBHG3vyz0Z_3V2idFSi?purpose=fullsize",
+            coordinates:[33.9810,51.4420]
+        },
+        {
+            name:"Sultan Amir Ahmad Bathhouse",
+            nameFa:"حمام سلطان امیراحمد",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/GhZ3Ps2RtGZMwid4qh9KRdinsfNdBZbQhAxyXbpXeyKCNP9BjZ8XXCc50IrL4IH_Bq9-mYtRuevSyrzVM9iPxXgCDQVV7nnDM5JOaqcOFbW0y1OQlW5Ziqhie0zFfDVQuZ5Oznce8AuF8c4LEN73cPqJGGwMHu5AoaTlnMfAy9n0vmpJacjhVpEn3zQxcTPY?purpose=fullsize",
+            coordinates:[33.9800,51.4370]
+        },
+        {
+            name:"Kashan Historic Bazaar",
+            nameFa:"بازار تاریخی کاشان",
+            category:"shopping",
+            image:"https://images.openai.com/static-rsc-4/rSDNmk6ExZj8MfvHkPp8jbJGUFZGDw53ReOtgUcWfMo7nvuV5gVCKVpFMq2OM9G4idiRKCSw6nenDxTykJWoYZPqh5_fXJI1jUGVbIAh7cji-DgWACr0Km7C27EoX-L7WTO0O34aKxYgj6fEUha6QaIlxcIhU_wSQk_9694FBG0HoRroplT7CWp2Jv_s8-TU?purpose=fullsize",
+            coordinates:[33.9820,51.4360]
+        }
+    ]
+  },
+  Kermanshah:{
+    subtitle:"Discover the History and Nature of Kermanshah",
+    subtitleFa:"تاریخ و طبیعت کرمانشاه را کشف کن",
+    accent:"#7C3AED",
+    center:[47.07,34.31],
+    places:[
+        {
+            name:"Taq-e Bostan",
+            nameFa:"طاق‌بستان",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/vgIsQ0rQJH197OyfVsk2OIbyB6401HN0_nNGWAeQGxEtVS8XyLbylxS6F1ZbHw7xPsbOCbS_EZiGo-WJnrohsxcpOH4f1XbOXejGYeEsfO8dm4YgBEZAxjN_MJnshDpu-LedBLge_B8KyySnx_alDT5wBSBU8fNkK3ixyZ6aTlSsnum4Kz_-TPZwUIRH7f7D?purpose=fullsize",
+            coordinates:[34.3920,47.1050]
+        },
+        {
+            name:"Bisotun",
+            nameFa:"بیستون",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/4YkEN10bkdjV1G2z45Ey_U7FCV03ZW35y5Ca6GIU5xDUP8HKYp8JccUGxVkCz7mnO2DAprxm-axsi-Hf8rJR2GRy-cm9KEWqYoYy5-KfH9CDmUEibqFH2OUMRJLBYDHZGNapzLxtXcboZxCsn4VzlHtudJv9g1K7kQskvTjRVuLX8CZKC2Po_h6qUXPEgUsy?purpose=fullsize",
+            coordinates:[34.3960,47.4350]
+        },
+        {
+            name:"Moaven al-Molk Tekyeh",
+            nameFa:"تکیه معاون‌الملک",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/Fl-FS0KlEs0UVoYaP3rAv8gnPC5JjVel-kGYY9TBElPXtr_tyMk2XaZUxLglj0tTQ6AqWgbUbm9InSQlhdtBiBinG8JFec8u2vd9wgBkBE7N-FGFiJxchYsXSSsQVB9k-vbCs85oKUtBxrhhgSdwWO6GY9Gg-QMFCvh_6x-KIpIMIgEd7uX0BXwZqSNE9NiQ?purpose=fullsize",
+            coordinates:[34.3180,47.0740]
+        },
+        {
+            name:"Emad al-Dowleh Mosque",
+            nameFa:"مسجد عمادالدوله",
+            category:"culture",
+            image:"https://images.openai.com/static-rsc-4/CU4Kypao3-xgXxu-JWlK2VKGyNs3ZkANIYvHg0FoDHJ7APD_I70Yd7H8_FQDLq7wt3sgZJgKD7a4f0ulwJ85R-DulW_wC39kCSfyUp8w0CyC7bus6ic_JaGoH4ZQHZyOtCHreUk1Fz2MM4OLY24Nw7Y7RZnyTpoUP1iinKVzfeXzTxS8vr8LdpRDBcKLSepI?purpose=fullsize",
+            coordinates:[34.3180,47.0710]
+        },
+        {
+            name:"Sarab-e Niloufar",
+            nameFa:"سراب نیلوفر",
+            category:"nature",
+            image:"https://images.openai.com/static-rsc-4/P0Fpb2dmtxLNheEPMy1lpCLeO7l7CrXAD0j7S6gOchPWKP66kFTO69H68c5jn9zeKsYmxPu9JWqfh_2SnOBQxO7uaTvzyn61p2oKGrYSK0Enpz8iEBdlb7KlCarp2kmzsIu2zqWvJ4fzmtRPNOktQBZ_AUaZyZB0MNo_xX8nD1LR7HSSxtAf5xdXo2niMNTN?purpose=fullsize",
+            coordinates:[34.4500,46.9900]
+        }
+    ]
+  }
 };
 
 const cityBounds = {
@@ -1084,7 +1232,19 @@ const cityBounds = {
   Kelardasht:{minLng:51.10, maxLng:51.25, minLat:36.45, maxLat:36.55},
   Tonekabon:{minLng:50.80, maxLng:51.00, minLat:36.78, maxLat:36.90},
   Fereydunkenar:{minLng:52.45, maxLng:52.60, minLat:36.62, maxLat:36.72},
+  Qeshm:{minLng:55.70,maxLng:56.15,minLat:26.65,maxLat:27.00},
+  Kashan:{minLng:51.35,maxLng:51.55,minLat:33.90,maxLat:34.08},
+  Kermanshah:{minLng:46.95,maxLng:47.20,minLat:34.25,maxLat:34.40}
 };
+
+
+function getCityCenter(city){
+  return {
+    lat: (city.minLat + city.maxLat)/2,
+    lng: (city.minLng + city.maxLng)/2
+  }
+}
+
 
 const translation = {
   en: {
@@ -1155,7 +1315,15 @@ const translation = {
     Behshahr:"Behshahr",
     Kelardasht:"Kelardasht",
     Tonekabon:"Tonekabon",
-    Fereydunkenar:"Fereydunkenar"
+    Fereydunkenar:"Fereydunkenar",
+    Qeshm:"Qeshm",
+    Kermanshah:"Kermanshah",
+    Kashan:"Kashan",
+    destinationcity:"destinationcity",
+    startcity:"startcity",
+    transportMode:"transportMode",
+    calculatejourny:"calculatejourny",
+    journeyTitle:"Plan Your Journey"
   },
   fa: {
     name: "ایران نُومَد",
@@ -1225,7 +1393,15 @@ const translation = {
     Behshahr:"بهشهر",
     Kelardasht:"کلاردشت",
     Tonekabon:"تنکابن",
-    Fereydunkenar:"فریدون کنار"
+    Fereydunkenar:"فریدون کنار",
+    Qeshm:"قشم",
+    Kermanshah:"کرمانشاه",
+    Kashan:"کاشان",
+    destinationcity:"شهر مقصد",
+    startcity:"شهر مبدا",
+    transportMode:"حالت حمل و نقل",
+    calculatejourny:"حساب کردن سفر",
+    journeyTitle:"برنامه ریزی سفرتون "
   },
 };
 
@@ -1327,6 +1503,84 @@ function renderCitySelector() {
     citySelector.appendChild(button);
   });
 }
+
+
+function calculateDistance(lat1,lon1,lat2,lon2){
+    const radians=degrees => degrees * Math.PI / 180;
+    const rlat1=radians(lat1);
+    const rlon1=radians(lon1);
+    const rlat2=radians(lat2);
+    const rlon2=radians(lon2);
+    const dLat=rlat2-rlat1;
+    const dLon=rlon2 - rlon1;
+    const sinlon=Math.pow(Math.sin(dLon/2),2);
+    const coslat1=Math.cos(rlat1)
+    const coslat2=Math.cos(rlat2)
+    const a=Math.pow(Math.sin(dLat/2),2) + coslat1 * coslat2 * sinlon;
+    const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+    const distance=6371*c
+    return distance
+}
+
+
+
+function getRouteCoordinates() {
+    routeresult.replaceChildren();
+
+    const startvalue = startcity.value;
+    const desvalue = destination.value;
+    const route = transport.value;
+
+    if (!startvalue || !desvalue) {
+        routeresult.textContent =
+            "Please select both starting and destination cities.";
+        return;
+    }
+
+    const startbound = cityBounds[startvalue.charAt(0).toUpperCase() + startvalue.slice(1)];
+    const destbound = cityBounds[desvalue.charAt(0).toUpperCase() + desvalue.slice(1)];
+    if (!startbound || !destbound) {
+        routeresult.textContent =
+            "Selected city was not found in cityBounds.";
+        return;
+    }
+
+    let speed;
+    if (route==="driving"){
+      speed=80
+    }else if(route==="bus"){
+      speed=70
+    }else if(route==="train"){
+      speed=100
+    }else if(route==="flight"){
+      speed=600
+    }else{
+      const errorMessage=document.createElement("p")
+      errorMessage.textContent="please select a valid transport mode."
+      routeresult.appendChild(errorMessage)
+      return;
+    }
+    const start=getCityCenter(startbound);
+    const dest=getCityCenter(destbound)
+    const distance=calculateDistance(start.lat,start.lng,dest.lat,dest.lng)
+    const traveltime=distance/speed;
+    let hours=Math.floor(traveltime)
+    let minutes=Math.round((traveltime-hours) * 60)
+    if (minutes===60){
+      hours++;
+      minutes=0
+    }
+    const p=document.createElement("p")
+    const speedtext=document.createElement("p")
+    const timetext=document.createElement("p")
+    p.textContent=`Straight-line distance: ${distance.toFixed(1)} km`
+    speedtext.textContent=`Assumed speed: ${speed} km/h`
+    timetext.textContent=`Estimated travel time: ${hours} hours and ${minutes} minutes`
+    routeresult.appendChild(p)
+    routeresult.appendChild(speedtext)
+    routeresult.appendChild(timetext)
+}
+
 
 function renderFilters(cityName) {
   filterBar.innerHTML = "";
@@ -1652,6 +1906,10 @@ chLanguage.addEventListener("click", function () {
   selectCity(currentCity, true);
 });
 
+calculatebtn.addEventListener("click",getRouteCoordinates)
+
+
+calculateDistance()
 initTheme();
 renderStats();
 changelanguage();
