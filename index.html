@@ -1,153 +1,291 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f172a">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
     <title>Iran Nomad | Discover Iran</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.3/index.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.3/index.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <div class="page-shell">
-        <header class="topbar">
-            <div class="brand-wrap">
-                <div class="brand-mark">I</div>
-                <div>
-                    <span class="brand-name" data-i18n="name">Iran Nomad</span>
-                    <small data-i18n="n">travel guide</small>
-                </div>
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">I</div>
+          <div>
+            <span class="brand-name" data-i18n="name">Iran Nomad</span>
+            <small data-i18n="n">travel guide</small>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <a href="#discover" data-i18n="discover">Discover</a>
+          <a href="#map-panel" data-i18n="map">Map</a>
+          <a href="#planner" data-i18n="planner">Planner</a>
+          <a href="#insights" data-i18n="insights">Insights</a>
+        </nav>
+
+        <div class="header-actions">
+          <button id="theme-toggle" class="theme-toggle" type="button">
+            <span>Dark mode</span>
+          </button>
+          <button id="change-Language" class="change-Language" type="button">
+            <span data-i18n="languageButton">Change Language to Persian</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="discover">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="text">Explore the soul of Iran</p>
+            <h1 data-i18n="p">
+              Journey through culture, desert, mountains and hospitality.
+            </h1>
+            <p class="hero-text" data-i18n="t">
+              Discover unforgettable places, plan your route, and build a
+              personal travel experience across Iran’s most beautiful cities.
+            </p>
+
+            <div class="search-box">
+              <input
+                id="city-search"
+                type="text"
+                placeholder="Search destination, landmark, or vibe..."
+                aria-label="Search destinations"
+                data-i18n-placeholder="searchbox"
+              />
+              <button type="button" class="search-btn" data-i18n="searchbtn">
+                Search
+              </button>
             </div>
 
-            <nav class="main-nav">
-                <a href="#discover" data-i18n="discover">Discover</a>
-                <a href="#map-panel" data-i18n="map">Map</a>
-                <a href="#planner" data-i18n="planner">Planner</a>
-                <a href="#insights" data-i18n="insights">Insights</a>
-            </nav>
-
-            <div class="header-actions">
-                <button id="theme-toggle" class="theme-toggle" type="button">
-                    <span>Dark mode</span>
-                </button>
-                <button id="change-Language" class="change-Language" type="button">
-                    <span data-i18n="languageButton">Change Language to Persian</span>
-                </button>
+            <div class="hero-actions">
+              <button class="primary-btn" type="button" data-i18n="Start">
+                Start exploring
+              </button>
+              <button class="secondary-btn" type="button" data-i18n="View">
+                View itineraries
+              </button>
             </div>
-        </header>
 
-        <main>
-            <section class="hero" id="discover">
-                <div class="hero-copy">
-                    <p class="eyebrow" data-i18n="text">Explore the soul of Iran</p>
-                    <h1 data-i18n="p">Journey through culture, desert, mountains and hospitality.</h1>
-                    <p class="hero-text" data-i18n="t">
-                        Discover unforgettable places, plan your route, and build a personal travel experience across Iran’s most beautiful cities.
-                    </p>
+            <div class="stats-row">
+              <div class="stat-card">
+                <strong id="city-total">12</strong>
+                <span data-i18n="citi">Cities</span>
+              </div>
+              <div class="stat-card">
+                <strong id="place-total">0</strong>
+                <span data-i18n="land">Landmarks</span>
+              </div>
+              <div class="stat-card">
+                <strong id="category-total">0</strong>
+                <span data-i18n="Travel">Travel styles</span>
+              </div>
+            </div>
+          </div>
 
-                    <div class="search-box">
-                        <input id="city-search" type="text" placeholder="Search destination, landmark, or vibe..." aria-label="Search destinations" data-i18n-placeholder="searchbox">
-                        <button type="button" class="search-btn" data-i18n="searchbtn">Search</button>
-                    </div>
+          <div class="hero-visual">
+            <div class="floating-badge badge-top">Best time: Spring</div>
+            <div class="floating-badge badge-bottom">Top pick</div>
+            <div class="hero-image-card">
+              <div class="hero-art" aria-label="Iran landscape artwork"></div>
+            </div>
+          </div>
+        </section>
 
-                    <div class="hero-actions">
-                        <button class="primary-btn" type="button" data-i18n="Start">Start exploring</button>
-                        <button class="secondary-btn" type="button" data-i18n="View">View itineraries</button>
-                    </div>
+        <section class="city-picker-wrap">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="c">Popular cities</p>
+            <h2 data-i18n="destination">Choose your destination</h2>
+          </div>
+          <div
+            id="city-selector"
+            class="city-selector"
+            aria-label="City selector"
+          ></div>
+        </section>
 
-                    <div class="stats-row">
-                        <div class="stat-card">
-                            <strong id="city-total">12</strong>
-                            <span data-i18n="citi">Cities</span>
-                        </div>
-                        <div class="stat-card">
-                            <strong id="place-total">0</strong>
-                            <span data-i18n="land">Landmarks</span>
-                        </div>
-                        <div class="stat-card">
-                            <strong id="category-total">0</strong>
-                            <span data-i18n="Travel">Travel styles</span>
-                        </div>
-                    </div>
-                </div>
+        <section class="map-panel" id="map-panel">
+          <div class="map-info">
+            <p class="eyebrow" data-i18n="selected">Selected city</p>
+            <h2 id="selected-city">Tehran</h2>
+            <p id="city-subtitle">Capital culture and mountain views</p>
+            <div class="city-meta">
+              <span id="city-region" data-i18n="Capital">Capital region</span>
+              <span id="city-season" data-i18n="citySeason"
+                >Best season: Spring</span
+              >
+              <span id="city-budget" data-i18n="cityBudget">Budget: $$$</span>
+            </div>
+          </div>
 
-                <div class="hero-visual">
-                    <div class="floating-badge badge-top">Best time: Spring</div>
-                    <div class="floating-badge badge-bottom">Top pick</div>
-                    <div class="hero-image-card">
-                        <div class="hero-art" aria-label="Iran landscape artwork"></div>
-                    </div>
-                </div>
-            </section>
+          <div id="map" aria-label="Map of Iran"></div>
+        </section>
 
-            <section class="city-picker-wrap">
-                <div class="section-heading">
-                    <p class="eyebrow" data-i18n="c">Popular cities</p>
-                    <h2 data-i18n="destination">Choose your destination</h2>
-                </div>
-                <div id="city-selector" class="city-selector" aria-label="City selector"></div>
-            </section>
+        <section id="planner" class="planner-section">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="trip">Trip builder</p>
+            <h2 data-i18n="route">Plan your route</h2>
+          </div>
 
-            <section class="map-panel" id="map-panel">
-                <div class="map-info">
-                    <p class="eyebrow" data-i18n="selected">Selected city</p>
-                    <h2 id="selected-city">Tehran</h2>
-                    <p id="city-subtitle">Capital culture and mountain views</p>
-                    <div class="city-meta">
-                        <span id="city-region" data-i18n="Capital">Capital region</span>
-                        <span id="city-season" data-i18n="citySeason">Best season: Spring</span>
-                        <span id="city-budget" data-i18n="cityBudget">Budget: $$$</span>
-                    </div>
-                </div>
+          <div class="route-planner planner-panel">
+            <h3 data-i18n="journeyTitle">Plan Your Journey</h3>
 
-                <div id="map" aria-label="Map of Iran"></div>
-            </section>
+            <div class="route-form">
+              <div class="form-group">
+                <label for="start-city" data-i18n="startcity"
+                  >Starting City</label
+                >
+                <select id="start-city">
+                  <option value="">Choose starting city</option>
+                  <option value="tehran">Tehran</option>
+                  <option value="qazvin">Qazvin</option>
+                  <option value="isfahan">Isfahan</option>
+                  <option value="shiraz">Shiraz</option>
+                  <option value="yazd">Yazd</option>
+                  <option value="mashhad">Mashhad</option>
+                  <option value="tabriz">Tabriz</option>
+                  <option value="kerman">Kerman</option>
+                  <option value="bandarAbbas">BandarAbbas</option>
+                  <option value="rasht">Rasht</option>
+                  <option value="bushehr">Bushehr</option>
+                  <option value="sari">Sari</option>
+                  <option value="karaj">Karaj</option>
+                  <option value="ramsar">Ramsar</option>
+                  <option value="chalus">Chalus</option>
+                  <option value="nowshahr">Nowshahr</option>
+                  <option value="amol">Amol</option>
+                  <option value="babolsar">Babolsar</option>
+                  <option value="behshahr">Behshahr</option>
+                  <option value="kelardasht">Kelardasht</option>
+                  <option value="tonekabon">Tonekabon</option>
+                  <option value="fereydunkenar">Fereydunkenar</option>
+                  <option value="qeshm">Qeshm</option>
+                  <option value="kashan">Kashan</option>
+                  <option value="kermanshah">Kermanshah</option>
+                </select>
+              </div>
 
-            <section id="planner" class="planner-section">
-                <div class="section-heading">
-                    <p class="eyebrow" data-i18n="trip">Trip builder</p>
-                    <h2 data-i18n="route">Plan your route</h2>
-                </div>
+              <div class="form-group">
+                <label for="destination-city" data-i18n="destinationcity"
+                  >Destination City</label
+                >
+                <select id="destination-city">
+                  <option value="">Choose destination</option>
+                  <option value="tehran">Tehran</option>
+                  <option value="qazvin">Qazvin</option>
+                  <option value="isfahan">Isfahan</option>
+                  <option value="shiraz">Shiraz</option>
+                  <option value="yazd">Yazd</option>
+                  <option value="mashhad">Mashhad</option>
+                  <option value="tabriz">Tabriz</option>
+                  <option value="Kerman">Kerman</option>
+                  <option value="bandarAbbas">BandarAbbas</option>
+                  <option value="rasht">Rasht</option>
+                  <option value="bushehr">Bushehr</option>
+                  <option value="sari">Sari</option>
+                  <option value="karaj">Karaj</option>
+                  <option value="ramsar">Ramsar</option>
+                  <option value="chalus">Chalus</option>
+                  <option value="nowshahr">Nowshahr</option>
+                  <option value="amol">Amol</option>
+                  <option value="babolsar">Babolsar</option>
+                  <option value="behshahr">Behshahr</option>
+                  <option value="kelardasht">Kelardasht</option>
+                  <option value="tonekabon">Tonekabon</option>
+                  <option value="fereydunkenar">Fereydunkenar</option>
+                  <option value="qeshm">Qeshm</option>
+                  <option value="kashan">Kashan</option>
+                  <option value="kermanshah">Kermanshah</option>
+                </select>
+              </div>
 
-                <div class="planner-grid">
-                    <div class="planner-panel">
-                        <h3 data-i18n="save">Your saved places</h3>
-                        <ul id="planner-list" class="planner-list"></ul>
-                    </div>
-                    <div class="planner-panel accent-panel">
-                        <h3 data-i18n="summary">Travel summary</h3>
-                        <div class="summary-item">
-                            <span data-i18n="des">Destination</span>
-                            <strong id="summary-city">Tehran</strong>
-                        </div>
-                        <div class="summary-item">
-                            <span data-i18n="saved">Saved spots</span>
-                            <strong id="summary-count">0</strong>
-                        </div>
-                        <div class="summary-item">
-                            <span data-i18n="Estimated">Estimated trip</span>
-                            <strong id="summary-trip">2-3 days</strong>
-                        </div>
-                        <button class="primary-btn full-width" type="button" data-i18n="Export">Export itinerary</button>
-                    </div>
-                </div>
-            </section>
+              <div class="form-group">
+                <label for="transport-mode" data-i18n="transportMode"
+                  >Transportation</label
+                >
+                <select id="transport-mode">
+                  <option value="driving">Car</option>
+                  <option value="bus">Bus</option>
+                  <option value="train">Train</option>
+                  <option value="flight">Flight</option>
+                </select>
+              </div>
 
-            <section class="discover-grid" id="insights">
-                <div class="discover-header">
-                    <p class="eyebrow" data-i18n="Local">Local favorites</p>
-                    <h2 id="title">Explore the highlights</h2>
-                </div>
-                <div class="filter-bar" id="filter-bar" aria-label="Attraction filters"></div>
-                <div id="suggestions" class="suggestions-grid"></div>
-            </section>
-        </main>
+              <button
+                id="calculate-route"
+                class="primary-btn"
+                type="button"
+                data-i18n="calculatejourny"
+              >
+                Calculate Journey
+              </button>
+            </div>
+
+            <div
+              id="route-result"
+              class="route-result"
+              aria-live="polite"
+            ></div>
+          </div>
+
+          <div class="planner-grid">
+            <div class="planner-panel">
+              <h3 data-i18n="save">Your saved places</h3>
+              <ul id="planner-list" class="planner-list"></ul>
+            </div>
+            <div class="planner-panel accent-panel">
+              <h3 data-i18n="summary">Travel summary</h3>
+              <div class="summary-item">
+                <span data-i18n="des">Destination</span>
+                <strong id="summary-city">Tehran</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="saved">Saved spots</span>
+                <strong id="summary-count">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="Estimated">Estimated trip</span>
+                <strong id="summary-trip">2-3 days</strong>
+              </div>
+              <button
+                class="primary-btn full-width"
+                type="button"
+                data-i18n="Export"
+              >
+                Export itinerary
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="discover-grid" id="insights">
+          <div class="discover-header">
+            <p class="eyebrow" data-i18n="Local">Local favorites</p>
+            <h2 id="title">Explore the highlights</h2>
+          </div>
+          <div
+            class="filter-bar"
+            id="filter-bar"
+            aria-label="Attraction filters"
+          ></div>
+          <div id="suggestions" class="suggestions-grid"></div>
+        </section>
+      </main>
     </div>
 
     <script src="https://static.neshan.org/sdk/mapboxgl/v1.13.2/neshan-sdk/v1.1.3/index.js"></script>
     <script src="JavaScript/script.js"></script>
-</body>
+  </body>
 </html>
