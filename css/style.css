@@ -3,6 +3,49 @@
 }
 
 
+
+select{
+  appearance:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width:100%;
+  padding: 14px 16px;
+  background-color: #ffffff;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font: inherit;
+  cursor: pointer;
+  transition: 
+  border-color 0.2s ease,
+  box-shadow 0.2s ease,
+  background-color 0.2s ease;
+}
+
+select:hover{
+  border-color: #d97706;
+}
+
+select:focus{
+  outline: none;
+  border-color: #d97706;
+  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.15);
+}
+
+select option{
+  padding:12px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+select option:checked{
+  background-color: #d97706;
+  color: #ffffff;
+}
+
+
+
 .route-planner .route-form {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
