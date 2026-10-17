@@ -27,13 +27,18 @@ const destination=document.getElementById("destination-city");
 const routeresult=document.getElementById("route-result")
 const transport=document.getElementById("transport-mode")
 const calculatebtn=document.getElementById("calculate-route")
+const searchdestination=document.getElementById("searchdestination");
+const searchstart=document.getElementById("searchstart")
 let currentlanguage = "en";
 const city = {
   Tehran: {
     subtitle: "Capital culture and mountain views",
     region: "Capital region",
+    regionFa:"پایتخت منطقه",
     season: "Spring",
-    budget: "$$$",
+    seasonFa:"بهار",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#d97706",
     center: [51.389, 35.6892],
     places: [
@@ -95,8 +100,11 @@ const city = {
   Qazvin: {
     subtitle: "Historic architecture and traditional markets",
     region: "Northwest Iran",
+    regionFa:"شمال غربی ایران",
     season: "Spring",
-    budget: "$$",
+    seasonFa:"بهار",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#059669",
     center: [49.99, 36.266],
     places: [
@@ -148,8 +156,11 @@ const city = {
   Isfahan: {
     subtitle: "Bridge city, grand squares, and Persian elegance",
     region: "Central Iran",
+    regionFa:"مرکز ایران",
     season: "Autumn",
-    budget: "$$$",
+    seasonFa:"پاییز",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#2563eb",
     center: [51.679, 32.654],
     places: [
@@ -208,8 +219,11 @@ const city = {
   Shiraz: {
     subtitle: "Poetry, gardens, and ancient heritage",
     region: "South Iran",
+    regionFa:"جنوب ایران",
     season: "Spring",
-    budget: "$$",
+    seasonFa:"بهار",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#7c3aed",
     center: [52.531, 29.61],
     places: [
@@ -270,8 +284,11 @@ const city = {
   Yazd: {
     subtitle: "Desert heritage and ancient adobe architecture",
     region: "Central Desert",
+    regionFa:"مرکز بیابان",
     season: "Winter",
-    budget: "$$",
+    seasonFa:"زمستان",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#f97316",
     center: [54.367, 31.897],
     places: [
@@ -334,8 +351,11 @@ const city = {
   Mashhad: {
     subtitle: "Pilgrimage city, spirituality and vibrant culture",
     region: "Northeast Iran",
+    regionFa:"شمال شرقی ایران",
     season: "Spring",
-    budget: "$$",
+    seasonFa:"بهار",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#f43f5e",
     center: [59.567, 36.26],
     places: [
@@ -378,8 +398,11 @@ const city = {
   Tabriz: {
     subtitle: "Cultural heart of northwest Iran",
     region: "Northwest Iran",
+    regionFa:"شمال غربی ایران",
     season: "Autumn",
-    budget: "$$",
+    seasonFa:"پاییز",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#0ea5e9",
     center: [46.291, 38.083],
     places: [
@@ -422,8 +445,11 @@ const city = {
   Kerman: {
     subtitle: "Desert landscapes and historical stories",
     region: "Southeast Iran",
+    regionFa:"جنوب شرقی ایران",
     season: "Winter",
-    budget: "$$",
+    seasonFa:"زمستان",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#84cc16",
     center: [57.083, 30.283],
     places: [
@@ -456,8 +482,11 @@ const city = {
   BandarAbbas: {
     subtitle: "Sea breeze, coastal charm and Persian Gulf energy",
     region: "Southern Coast",
+    regionFa:"سواحل جنوبی",
     season: "Winter",
-    budget: "$$",
+    seasonFa:"زمستان",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#14b8a6",
     center: [56.266, 27.183],
     places: [
@@ -490,8 +519,11 @@ const city = {
   Rasht: {
     subtitle: "Green landscapes and northern Persian serenity",
     region: "Northern Iran",
+    regionFa:"شمال ایران",
     season: "Summer",
-    budget: "$$",
+    seasonFa:"تابستان",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#22c55e",
     center: [49.603, 37.283],
     places: [
@@ -525,8 +557,11 @@ const city = {
   Bushehr: {
     subtitle: "Historic ports and Gulf coast beauty",
     region: "Southern Coast",
+    regionFa:"سواحل جنوبی",
     season: "Winter",
-    budget: "$$",
+    seasonFa:"زمستان",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#38bdf8",
     center: [50.836, 28.916],
     places: [
@@ -560,8 +595,11 @@ const city = {
   Sari: {
     subtitle: "Forest vibes, culture and northern charm",
     region: "Mazandaran",
+    regionFa:"مازندران",
     season: "Summer",
-    budget: "$$",
+    seasonFa:"تابستان",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#a855f7",
     center: [53.058, 36.563],
     places: [
@@ -594,10 +632,12 @@ const city = {
   },
   Karaj: {
     subtitle: "A gateway to Alborz mountains, nature, and weekend escapes",
-
     region: "Alborz Province",
+    regionFa:"استان البرز",
     season: "Spring & Autumn",
-    budget: "$$",
+    seasonFa:"بهار و پاییز",
+    budget: "Medium",
+    budgetFa:"متوسط",
     accent: "#a85f",
     center: [50.9916, 35.84],
     places: [
@@ -1067,55 +1107,61 @@ const city = {
   Qeshm:{
     subtitle:"Discover the Natural Wonders of Qeshm",
     subtitleFa:"شگفتی‌های طبیعی قشم را کشف کن",
+    region:"Southern Iran",
+    regionFa:"جنوب ایران",
+    season:"Autumn, Winter",
+    seasonFa:"زمستان , پاییز",
+    budget:"Medium",
+    budgetFa:"متوسط",
     accent:"#0D9488",
     center:[55.9355, 26.8264],
     places:[
         {
             name:"Center of Qeshm",
             nameFa:"مرکز قشم",
-            category:"city",
+            category:"City",
             image:"blob:https://chatgpt.com/5a25d195-9aa4-4e96-b17d-eef10d612aad",
             coordinates:[26.9581,55.8917]
         },
         {
             name:"Stars Valley",
             nameFa:"دره ستارگان",
-            category:"nature",
+            category:"Nature",
             image:"https://images.openai.com/static-rsc-4/wp-0MEqgoVe1Bup_rnmJtMlK_hqDa6vZ-GKKZe8TQzNNB4uvNOANC4pcbwkyt6KOLIzYx3F-NJG7ZiyefKXrdQHwNSDEP1BbH4xm3SVl9GgCukDRxLut_MGyptovqDIr_Ll7kqXH78YdrI-ewi_SisySTA--OdSXhwZYD-GkYNQCCd3sQ8CMSswrQGot8iMs?purpose=fullsize",
             coordinates:[26.8830,55.9500]
         },
         {
             name:"Chahkooh Canyon",
             nameFa:"تنگه چاهکوه",
-            category:"nature",
+            category:"Nature",
             image:"https://images.openai.com/static-rsc-4/f6xEeqz-pYKklMi1bbP6iAK4T5lWNlHi5RUaNaZFsDoECB3zy3htGSimO7KU6c3dGcfdNkUrfdcteHSTKdot7xeTz5UTTiPT5VWWav1nAhORq0toNt-YTYnZI3zIvjE-3gEDFJYm4di6rGrXjLadHDWxOwmx-LDmnCDJno10Q1MGRIc-UfXLWoSe2buBWLO_?purpose=fullsize",
             coordinates:[26.7010,55.8840]
         },
         {
             name:"Hara Mangrove Forest",
             nameFa:"جنگل‌های حرا",
-            category:"nature",
+            category:"Nature",
             image:"https://images.openai.com/static-rsc-4/IMWqkJLvnnKYS_SQDEkRM_tLMuTtyAPPx92PGH1h9i4XXTwaxdHl8MxTKp9j3sIAsChZoy_iLH3EI6b3FOjcy1bCv6ibw7_EdDg4FXU_w-HvBsv7fLDNi2bRq-uCYO5knViLjNgEcZUs4Y22KfslLgk7634e9I-KErIeJh1zTGpGMyySN9j9K_HUy8vOWw8O?purpose=fullsize",
             coordinates:[26.8000,55.7000]
         },
         {
             name:"Naz Islands",
             nameFa:"جزایر ناز",
-            category:"nature",
+            category:"Nature",
             image:"https://images.openai.com/static-rsc-4/GgKsXp7PJui83qWsVrX7xF_LMe2cxPIQejRDufmPdPtJyHmGjWUQMJ-hZJ3uPzLrfhUOoda6XV2NytKkI-JN2k933QrvxGAzexg_uB5-H6yNgnrlC2apaYe467Wh7YFHvorO5KnwMOI8LxCN2sdJWDlov3h0aKNmXRO2dllHatblnFk28dT3sLiOMXd5BXDM?purpose=fullsize",
             coordinates:[26.8000,56.0700]
         },
         {
             name:"Laft Village",
             nameFa:"روستای لافت",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/9m-HPZdWGW1U_prXtRbD1slgA1K1Yg-4tj0c4EPajoiZteybSYB-h4Pn236LD8zXaRYP2WIu38qylO8ju5zBrjkg3pliKGy6VRNAeemkUnkE3w3_IiI2kov1SzVlJcb3aYIU0M8sj23x0FZkvfYPNcqTDapzTImRvyy-De78ACdU4M1wLm69SZFsbjimamFN?purpose=fullsize",
             coordinates:[26.9500,55.7500]
         },
         {
             name:"Namakdan Salt Cave",
             nameFa:"غار نمکدان",
-            category:"nature",
+            category:"Nature",
             image:"https://images.openai.com/static-rsc-4/16-CYjmglMg_Lgj8aBVdQTYSbzfQnsQZOf_g2q-ewvai7IbiVpVyEwtZP_ItUBKuO-KvvA_TLrRtvksShwy2XOUejdutV_5vYszCtSmyRo0lx0uDmbSKU9bHmrBwAakU1ia25xlV4DnSTTisZA2Y0WvLYeCofCqZ8PgfocvJPy62QwdHGj2RjmjzHP-tYj8f?purpose=fullsize",
             coordinates:[26.6500,55.5500]
         },
@@ -1124,41 +1170,47 @@ const city = {
   Kashan:{
     subtitle:"Explore the Historic Charm of Kashan",
     subtitleFa:"جاذبه‌های تاریخی و معماری کاشان را کشف کن",
+    region:"Central Iran",
+    regionFa:"مرکز ایران",
+    season:"Spring, Autumn",
+    seasonFa:"پاییز , بهار",
+    budget:"Medium",
+    budgetFa:"متوسط",
     accent:"#B45309",
     center:[51.428,33.982],
     places:[
         {
             name:"Fin Garden",
             nameFa:"باغ فین",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/gdC6aH93Fg42dTdpFHnETN8ElNdaVXXU_cKRqvEXLgC_cYqrQ1O5gkWRuJ1gGearLw8WnehXG53Xxz2e8GPCCluB4opYjaxDJ3oHwC7ZowKnU2YYVLrRgC_KLTo85XIFHkC1gMyJj1wQuV8YMIibok8q1--MVj4Xiyny-w6SZ0NC7a6wPnNpOWDyMP7_HJCf?purpose=fullsize",
             coordinates:[33.9470,51.4430]
         },
         {
             name:"Tabatabaei House",
             nameFa:"خانه طباطبایی‌ها",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/l6DBSKkrce5iSrn2ULHicgMGW63VR55u896-VCf5Pm8NL7q1rs89HfgUecuYIhcsv28Nz9PtMlhQlLl-gW0wnA1LyhKR2MtIdX7_w4BveBfFw-9WjHurYLhOJsoCqaAZy2lM8nlGwJVstmKab4ykEe7jTzgu6kBRNf56W62BqTg6lJaQxE0VIUJdjN2K1RPL?purpose=fullsize",
             coordinates:[33.9790,51.4370]
         },
         {
             name:"Agha Bozorg Mosque",
             nameFa:"مسجد آقابزرگ",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/yB557wyEUNu5vE3KSfN94iHDJgZGwr3041g9j9cM6Zw8fDfY-uq3DjdVGZrFS4ok_OgvtP_u-IB5hbzfjkH8SiAsu44PUS0u-CfSnIG14JYbd_tdt_8imir5KHDc-hrzrV8bwNkoGLiccSk1ZSV_4Bz8mbfG5FBjy4g1_Gh7WGas4oBHG3vyz0Z_3V2idFSi?purpose=fullsize",
             coordinates:[33.9810,51.4420]
         },
         {
             name:"Sultan Amir Ahmad Bathhouse",
             nameFa:"حمام سلطان امیراحمد",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/GhZ3Ps2RtGZMwid4qh9KRdinsfNdBZbQhAxyXbpXeyKCNP9BjZ8XXCc50IrL4IH_Bq9-mYtRuevSyrzVM9iPxXgCDQVV7nnDM5JOaqcOFbW0y1OQlW5Ziqhie0zFfDVQuZ5Oznce8AuF8c4LEN73cPqJGGwMHu5AoaTlnMfAy9n0vmpJacjhVpEn3zQxcTPY?purpose=fullsize",
             coordinates:[33.9800,51.4370]
         },
         {
             name:"Kashan Historic Bazaar",
             nameFa:"بازار تاریخی کاشان",
-            category:"shopping",
+            category:"Market",
             image:"https://images.openai.com/static-rsc-4/rSDNmk6ExZj8MfvHkPp8jbJGUFZGDw53ReOtgUcWfMo7nvuV5gVCKVpFMq2OM9G4idiRKCSw6nenDxTykJWoYZPqh5_fXJI1jUGVbIAh7cji-DgWACr0Km7C27EoX-L7WTO0O34aKxYgj6fEUha6QaIlxcIhU_wSQk_9694FBG0HoRroplT7CWp2Jv_s8-TU?purpose=fullsize",
             coordinates:[33.9820,51.4360]
         }
@@ -1167,41 +1219,47 @@ const city = {
   Kermanshah:{
     subtitle:"Discover the History and Nature of Kermanshah",
     subtitleFa:"تاریخ و طبیعت کرمانشاه را کشف کن",
+    region:"Western Iran",
+    regionFa:"غرب ایران",
+    season:"Spring, Autumn",
+    seasonFa:"پاییز , بهار",
+    budget:"Medium",
+    budgetFa:"متوسط",
     accent:"#7C3AED",
     center:[47.07,34.31],
     places:[
         {
             name:"Taq-e Bostan",
             nameFa:"طاق‌بستان",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/vgIsQ0rQJH197OyfVsk2OIbyB6401HN0_nNGWAeQGxEtVS8XyLbylxS6F1ZbHw7xPsbOCbS_EZiGo-WJnrohsxcpOH4f1XbOXejGYeEsfO8dm4YgBEZAxjN_MJnshDpu-LedBLge_B8KyySnx_alDT5wBSBU8fNkK3ixyZ6aTlSsnum4Kz_-TPZwUIRH7f7D?purpose=fullsize",
             coordinates:[34.3920,47.1050]
         },
         {
             name:"Bisotun",
             nameFa:"بیستون",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/4YkEN10bkdjV1G2z45Ey_U7FCV03ZW35y5Ca6GIU5xDUP8HKYp8JccUGxVkCz7mnO2DAprxm-axsi-Hf8rJR2GRy-cm9KEWqYoYy5-KfH9CDmUEibqFH2OUMRJLBYDHZGNapzLxtXcboZxCsn4VzlHtudJv9g1K7kQskvTjRVuLX8CZKC2Po_h6qUXPEgUsy?purpose=fullsize",
             coordinates:[34.3960,47.4350]
         },
         {
             name:"Moaven al-Molk Tekyeh",
             nameFa:"تکیه معاون‌الملک",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/Fl-FS0KlEs0UVoYaP3rAv8gnPC5JjVel-kGYY9TBElPXtr_tyMk2XaZUxLglj0tTQ6AqWgbUbm9InSQlhdtBiBinG8JFec8u2vd9wgBkBE7N-FGFiJxchYsXSSsQVB9k-vbCs85oKUtBxrhhgSdwWO6GY9Gg-QMFCvh_6x-KIpIMIgEd7uX0BXwZqSNE9NiQ?purpose=fullsize",
             coordinates:[34.3180,47.0740]
         },
         {
             name:"Emad al-Dowleh Mosque",
             nameFa:"مسجد عمادالدوله",
-            category:"culture",
+            category:"Culture",
             image:"https://images.openai.com/static-rsc-4/CU4Kypao3-xgXxu-JWlK2VKGyNs3ZkANIYvHg0FoDHJ7APD_I70Yd7H8_FQDLq7wt3sgZJgKD7a4f0ulwJ85R-DulW_wC39kCSfyUp8w0CyC7bus6ic_JaGoH4ZQHZyOtCHreUk1Fz2MM4OLY24Nw7Y7RZnyTpoUP1iinKVzfeXzTxS8vr8LdpRDBcKLSepI?purpose=fullsize",
             coordinates:[34.3180,47.0710]
         },
         {
             name:"Sarab-e Niloufar",
             nameFa:"سراب نیلوفر",
-            category:"nature",
+            category:"Nature",
             image:"https://images.openai.com/static-rsc-4/P0Fpb2dmtxLNheEPMy1lpCLeO7l7CrXAD0j7S6gOchPWKP66kFTO69H68c5jn9zeKsYmxPu9JWqfh_2SnOBQxO7uaTvzyn61p2oKGrYSK0Enpz8iEBdlb7KlCarp2kmzsIu2zqWvJ4fzmtRPNOktQBZ_AUaZyZB0MNo_xX8nD1LR7HSSxtAf5xdXo2niMNTN?purpose=fullsize",
             coordinates:[34.4500,46.9900]
         }
@@ -1323,7 +1381,9 @@ const translation = {
     startcity:"startcity",
     transportMode:"transportMode",
     calculatejourny:"calculatejourny",
-    journeyTitle:"Plan Your Journey"
+    journeyTitle:"Plan Your Journey",
+    Market:"Market",
+    City:"City"
   },
   fa: {
     name: "ایران نُومَد",
@@ -1401,7 +1461,9 @@ const translation = {
     startcity:"شهر مبدا",
     transportMode:"حالت حمل و نقل",
     calculatejourny:"حساب کردن سفر",
-    journeyTitle:"برنامه ریزی سفرتون "
+    journeyTitle:"برنامه ریزی سفرتون ",
+    Market:"مغازه",
+    City:"شهر"
   },
 };
 
@@ -1681,10 +1743,17 @@ function renderCityCards(
 
 function updateMetaData(cityName) {
   const selected = city[cityName];
-  cityRegion.textContent = selected.region;
-  citySeason.textContent = `Best season: ${selected.season}`;
-  cityBudget.textContent = `Budget: ${selected.budget}`;
-  summaryCity.textContent = translation[currentlanguage][cityName];
+  if(currentlanguage==="en"){  
+    cityRegion.textContent = selected.region;
+    citySeason.textContent = `Best season: ${selected.season}`;
+    cityBudget.textContent = `Budget: ${selected.budget}`;
+    summaryCity.textContent = translation[currentlanguage][cityName];
+  }else if(currentlanguage==="fa"){
+    cityRegion.textContent = selected.regionFa;
+    citySeason.textContent = `بهترین فصل: ${selected.seasonFa}`;
+    cityBudget.textContent = `رنج هزینه: ${selected.budgetFa}`;
+    summaryCity.textContent = translation[currentlanguage][cityName];
+  }
 }
 
 function selectCity(cityName, preserveSearch = false) {
@@ -1909,7 +1978,6 @@ chLanguage.addEventListener("click", function () {
 calculatebtn.addEventListener("click",getRouteCoordinates)
 
 
-calculateDistance()
 initTheme();
 renderStats();
 changelanguage();
