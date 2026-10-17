@@ -27,8 +27,6 @@ const destination=document.getElementById("destination-city");
 const routeresult=document.getElementById("route-result")
 const transport=document.getElementById("transport-mode")
 const calculatebtn=document.getElementById("calculate-route")
-const searchdestination=document.getElementById("searchdestination");
-const searchstart=document.getElementById("searchstart")
 let currentlanguage = "en";
 const city = {
   Tehran: {
@@ -1743,7 +1741,7 @@ function renderCityCards(
 
 function updateMetaData(cityName) {
   const selected = city[cityName];
-  if(currentlanguage==="en"){  
+  if(currentlanguage==="en"){ 
     cityRegion.textContent = selected.region;
     citySeason.textContent = `Best season: ${selected.season}`;
     cityBudget.textContent = `Budget: ${selected.budget}`;
